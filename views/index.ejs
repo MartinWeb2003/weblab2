@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vulnerable Web Application</title>
+</head>
+<body>
+  <h1>Welcome to the Vulnerable Web Application</h1>
+  <p>SQL Injection Vulnerability is currently: <strong><%= sqlInjectionVulnerability %></strong></p>
+
+  <% if (sqlInjectionVulnerability === 'Enabled') { %>
+    <form action="/toggle" method="POST">
+      <input type="hidden" name="sql" value="off">
+      <button type="submit">Disable SQL Injection Vulnerability</button>
+    </form>
+  <% } else { %>
+    <form action="/toggle" method="POST">
+      <input type="hidden" name="sql" value="on">
+      <button type="submit">Enable SQL Injection Vulnerability</button>
+    </form>
+  <% } %>
+
+  <p>CSRF Vulnerability is currently: <strong><%= csrfVulnerability %></strong></p>
+
+  <% if (csrfVulnerability === 'Enabled') { %>
+    <form action="/toggle" method="POST">
+        <input type="hidden" name="csrf" value="<%= csrfVulnerability === 'Enabled' ? 'off' : 'on' %>">
+        <button type="submit"><%= csrfVulnerability === 'Enabled' ? 'Disable' : 'Enable' %> CSRF Vulnerability</button>
+      </form>      
+  <% } else { %>
+    <form action="/toggle" method="POST">
+      <input type="hidden" name="csrf" value="on">
+      <button type="submit">Enable CSRF Vulnerability</button>
+    </form>
+  <% } %>
+
+  <ul>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/change-email">Change Email</a></li>
+    <% if (typeof userId !== 'undefined' && userId) { %>
+      <li><a href="/logout">Logout</a></li>
+    <% } %>
+  </ul>
+</body>
+</html>

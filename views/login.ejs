@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+      <label>Username:</label>
+      <input type="text" name="username" required>
+      <label>Password:</label>
+      <input type="password" name="password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p>SQL Injection Vulnerability is <strong><%= sqlInjectionVulnerability %></strong></p>
+    <p>CSRF Vulnerability is <strong><%= csrfVulnerability %></strong></p>
+    <a href="/">Back to Home</a>
+  </div>
+</body>
+</html>

